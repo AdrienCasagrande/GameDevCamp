@@ -21,6 +21,7 @@ public class HealthScript : MonoBehaviour {
 			hp -= bullet.damage;
 			Destroy(bullet.gameObject);
 			if (hp <= 0) {
+				SFXScript.instance.explode(transform.position);
 				Destroy(gameObject);
 			}
 		}

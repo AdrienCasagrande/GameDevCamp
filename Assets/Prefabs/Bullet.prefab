@@ -72,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTime: 1
   damage: 1
+  sound: {fileID: 8300000, guid: 706c5de960471d94faa4b0360b08ca98, type: 3}
 --- !u!212 &21252808
 SpriteRenderer:
   m_ObjectHideFlags: 1
