@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour {
 		force = Input.GetAxis ("Vertical") * thrustPower;
 		rotation = Input.GetAxis ("Horizontal") * rotationSpeed;
 		Vector3 myRot = transform.rotation.eulerAngles;
-		myRot.z = rotation;
+		myRot.z = -rotation;
 		transform.Rotate (myRot * Time.deltaTime * 100);
 	}
 
