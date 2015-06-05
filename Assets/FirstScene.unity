@@ -292,6 +292,7 @@ GameObject:
   - 50: {fileID: 651861102}
   - 114: {fileID: 651861104}
   - 68: {fileID: 651861103}
+  - 114: {fileID: 651861105}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -466,6 +467,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrustPower: 2
   rotationSpeed: 2
+--- !u!114 &651861105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 651861099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1782c542610c04e92d70a14b3162d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &718454004
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +648,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1138405156}
+  - 114: {fileID: 1138405157}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -655,6 +668,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1138405157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138405155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab47c6f4f63a30a4797016598247d682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boomEffect: {fileID: 19831466, guid: f1779f33a40582e46b7c76d86ace386c, type: 2}
+  boomSound: {fileID: 8300000, guid: 531f5b77e973e0c4a865459e092fc9e0, type: 3}
 --- !u!1 &1238870868
 GameObject:
   m_ObjectHideFlags: 0
