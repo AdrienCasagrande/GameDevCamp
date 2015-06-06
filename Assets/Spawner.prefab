@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11445626}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.80999994, y: 6.48000002, z: 0}
+  m_LocalPosition: {x: -.170000002, y: 8.64999962, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   spawnTime: 1
   spawnDelay: 2
   enemies:
-  - {fileID: 150274, guid: a1f77dc2ab51ab34a9692d5816fc27fd, type: 2}
+  - {fileID: 162616, guid: a998e4d60acc128419227fb8e8e48007, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
