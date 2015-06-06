@@ -3,8 +3,9 @@ using System.Collections;
 
 public class BulletScript : MonoBehaviour {
 
-	public int spawnTime = 1;
+	public float spawnTime = 1.0f;
 	public float damage = 1.0f;
+	public float fireRate = 0.5f;
 	public AudioClip sound;
 
 	private float endOfSpawn;
