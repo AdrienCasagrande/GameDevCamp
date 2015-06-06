@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 08c88281fa6514a42b2127993231a95d
 folderAsset: yes
 timeCreated: 1433594810
+=======
+guid: 88f0981409430524ab115141e5d64e3c
+folderAsset: yes
+timeCreated: 1433587493
+>>>>>>> ajout du menu
 licenseType: Free
 DefaultImporter:
   userData: 
