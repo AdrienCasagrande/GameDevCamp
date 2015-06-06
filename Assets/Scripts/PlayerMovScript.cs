@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerScript : MonoBehaviour {
+public class PlayerMovScript : MonoBehaviour {
 
 	public int thrustPower = 2;
 	public int rotationSpeed = 2;
