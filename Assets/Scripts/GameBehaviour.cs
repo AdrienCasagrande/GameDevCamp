@@ -5,7 +5,7 @@ public class GameBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PoolManager.Spawn("Duff");
+//		PoolManager.Spawn("Duff");
 	}
 	
 	// Update is called once per frame

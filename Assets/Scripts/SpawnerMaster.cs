@@ -11,6 +11,7 @@ public class SpawnerMaster : MonoBehaviour {
 		foreach(GameObject spawner in spawners)
 		{
 			spawner.SendMessage("InvokeSpawn", 1f);
+			Debug.Log(spawner.name);
 		}
 	}
 	
