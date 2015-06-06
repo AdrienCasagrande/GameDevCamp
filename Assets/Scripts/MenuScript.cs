@@ -7,6 +7,7 @@ public class MenuScript : MonoBehaviour {
 	public Font CustomFont;
 	GUIStyle customStyle;
 	GUIStyle TitleStyle;
+	public Texture2D Button;
 
 	void OnGUI()
 	{
@@ -52,7 +53,9 @@ public class MenuScript : MonoBehaviour {
 
 
 		if (GUI.Button (PlayButtonRect, "Play", customStyle)) {
-			Application.LoadLevel ("FirstScene");
+			FadeLevel.LoadLevel("FirstScene" , 1,1,Color.black);
+			//Application.LoadLevel ("FirstScene");
+
 		}
 
 		if (GUI.Button (ExitButtonRect, "Exit", customStyle)) {

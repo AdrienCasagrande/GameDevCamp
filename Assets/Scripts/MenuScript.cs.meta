@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 8b7a169e6f50a39408fc7ae22d4cc9dc
-timeCreated: 1433517876
+timeCreated: 1433525339
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - CustomFont: {fileID: 12800000, guid: 43e85075070dbc14eb63d69db96152f0, type: 3}
+  - song: {fileID: 8300000, guid: 706c5de960471d94faa4b0360b08ca98, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
