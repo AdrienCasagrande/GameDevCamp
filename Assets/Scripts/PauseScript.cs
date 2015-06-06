@@ -41,7 +41,7 @@ public class PauseScript : MonoBehaviour {
 
 				//FadeLevel.LoadLevel ("Menu 3D", 1, 1, Color.black);
 				//Test du game over
-				FadeLevel.LoadLevel ("GameOver", 1, 1, Color.black);
+				//FadeLevel.LoadLevel ("GameOver", 1, 1, Color.black);
 			}
 		}
 	}

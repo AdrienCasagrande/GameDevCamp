@@ -53,7 +53,7 @@ public class MenuScript : MonoBehaviour {
 
 
 		if (GUI.Button (PlayButtonRect, "Play", customStyle)) {
-			FadeLevel.LoadLevel("FirstScene" , 1,1,Color.black);
+			//FadeLevel.LoadLevel("FirstScene" , 1,1,Color.black);
 			//Application.LoadLevel ("FirstScene");
 
 		}
