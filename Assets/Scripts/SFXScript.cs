@@ -5,7 +5,10 @@ public class SFXScript : MonoBehaviour {
 
 	public static SFXScript instance;
 	public ParticleSystem boomEffect;
+	public ParticleSystem flameBurst;
 	public AudioClip boomSound;
+
+	private AudioSource audioCenter;
 
 	void Awake() {
 		if (instance != null) {
@@ -24,6 +27,10 @@ public class SFXScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void burst(Vector3 position) {
+		instantiate (flameBurst, position);
 	}
 
 	public void explode(Vector3 position) {

@@ -3,11 +3,12 @@ using System.Collections;
 
 public class PlayerMovScript : MonoBehaviour {
 
-	public int thrustPower = 2;
+	public GameObject primaryPropulsor;
+	public GameObject retroPropulsor;
 	public int rotationSpeed = 2;
-
-	private float force = 0;
+	
 	private float rotation;
+	private float verticalIntensity = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,7 @@ public class PlayerMovScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		force = Input.GetAxis ("Vertical") * thrustPower;
+		verticalIntensity = Input.GetAxis("Vertical");
 		rotation = Input.GetAxis ("Horizontal") * rotationSpeed;
 		Vector3 myRot = transform.rotation.eulerAngles;
 		myRot.z = -rotation;
@@ -24,6 +25,10 @@ public class PlayerMovScript : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		GetComponent<Rigidbody2D>().AddForce (transform.up * force);
+		if (verticalIntensity > 0) {
+			primaryPropulsor.GetComponent<PrimaryPropulsorScript>().thrust(verticalIntensity);
+		} else if (verticalIntensity < 0) {
+			retroPropulsor.GetComponent<RetroPropulsorScript>().thrust(verticalIntensity);
+		}
 	}
 }
