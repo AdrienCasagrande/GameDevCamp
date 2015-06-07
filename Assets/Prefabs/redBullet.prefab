@@ -55,7 +55,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 154336}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: -.272250175, y: .408369303}
   serializedVersion: 2
@@ -84,8 +84,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTime: 1
   damage: 1
-  fireRate: .5
-  sound: {fileID: 0}
+  fireRate: 1
+  sound: {fileID: 8300000, guid: 706c5de960471d94faa4b0360b08ca98, type: 3}
 --- !u!212 &21233588
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -15,16 +15,11 @@ public class ApplicationManager : MonoBehaviour {
 
 	public void Play()
 	{
-		FadeLevel.LoadLevel("FirstScene" , 1,1,Color.black);
+		FadeLevel.instance.LoadLevel("FirstScene" , 1,1,Color.black);
 	}
 
-	public void Main()
+	public void MainMenu()
 	{
-		FadeLevel.LoadLevel ("Menu 3D", 1, 1, Color.black);
-	}
-
-	public void Over()
-	{
-		FadeLevel.LoadLevel ("GameOver", 1, 1, Color.black);
+		FadeLevel.instance.LoadLevel ("Menu 3D", 1, 1, Color.black);
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PrimaryPropulsorScript : MonoBehaviour {
 
+
 	public int thrustPower = 2;
 
 	private float force = 0;

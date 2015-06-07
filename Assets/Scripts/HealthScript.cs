@@ -18,12 +18,20 @@ public class HealthScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider) {
 		BulletScript bullet = collider.gameObject.GetComponent<BulletScript> ();
 		if (bullet != null) {
-			hp -= bullet.damage;
+			takeDamage(bullet.damage);
 			Destroy(bullet.gameObject);
-			if (hp <= 0) {
-				SFXScript.instance.explode(transform.position);
-				Destroy(gameObject);
-			}
+		}
+	}
+
+	void OnCollisionEnter2D() {
+		takeDamage (5);
+	}
+
+	void takeDamage(float damage) {
+		hp -= damage;
+		if (hp <= 0) {
+			SFXScript.instance.explode(transform.position);
+			Destroy(gameObject);
 		}
 	}
 }

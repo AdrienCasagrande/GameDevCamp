@@ -1,34 +1,27 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FadeLevel : MonoBehaviour 
 {
-		private static FadeLevel m_Instance = null;
+		public static FadeLevel instance = null;
 		private Material m_Material = null;
 		private string m_LevelName = "";
 		private int m_LevelIndex = 0;
 		private bool m_Fading = false;
-		
-		private static FadeLevel Instance
-		{
-			get
-			{
-				if (m_Instance == null)
-				{
-					m_Instance = (new GameObject("FadeLevel")).AddComponent<FadeLevel>();
-				}
-				return m_Instance;
-			}
-		}
+
 		public static bool Fading
 		{
-			get { return Instance.m_Fading; }
+			get { return instance.m_Fading; }
 		}
 		
 		private void Awake()
 		{
 			DontDestroyOnLoad(this);
-			m_Instance = this;
+			if (instance == null) {
+				instance = this;
+			} else {
+				Destroy (this.gameObject);
+			}
 			m_Material = new Material("Shader \"Plane/No zTest\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Off Fog { Mode Off } BindChannels { Bind \"Color\",color } } } }");
 		}
 		
@@ -75,17 +68,17 @@ public class FadeLevel : MonoBehaviour
 			StartCoroutine(Fade(aFadeOutTime, aFadeInTime, aColor));
 		}
 		
-		public static void LoadLevel(string aLevelName,float aFadeOutTime, float aFadeInTime, Color aColor)
+		public void LoadLevel(string aLevelName,float aFadeOutTime, float aFadeInTime, Color aColor)
 		{
 			if (Fading) return;
-			Instance.m_LevelName = aLevelName;
-			Instance.StartFade(aFadeOutTime, aFadeInTime, aColor);
+			instance.m_LevelName = aLevelName;
+			instance.StartFade(aFadeOutTime, aFadeInTime, aColor);
 		}
-		public static void LoadLevel(int aLevelIndex,float aFadeOutTime, float aFadeInTime, Color aColor)
+		public void LoadLevel(int aLevelIndex,float aFadeOutTime, float aFadeInTime, Color aColor)
 		{
 			if (Fading) return;
-			Instance.m_LevelName = "";
-			Instance.m_LevelIndex = aLevelIndex;
-			Instance.StartFade(aFadeOutTime, aFadeInTime, aColor);
+			instance.m_LevelName = "";
+			instance.m_LevelIndex = aLevelIndex;
+			instance.StartFade(aFadeOutTime, aFadeInTime, aColor);
 		}
 	}
