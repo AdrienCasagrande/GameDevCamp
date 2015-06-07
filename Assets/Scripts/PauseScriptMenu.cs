@@ -3,10 +3,7 @@ using System.Collections;
 
 public class PauseScriptMenu : MonoBehaviour {
 
-	void Awake ()
-	{
-		DontDestroyOnLoad (this);
-	}
+
 	// Use this for initialization
 	void Start () {
 

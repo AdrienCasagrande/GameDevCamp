@@ -15,7 +15,8 @@ public class ApplicationManager : MonoBehaviour {
 
 	public void Play()
 	{
-		FadeLevel.LoadLevel("FirstScene" , 1,1,Color.black);
+		//Application.LoadLevel ("FirstScene");
+		FadeLevel.LoadLevel ("FirstScene" , 1,1,Color.black);
 	}
 
 	public void MainMenu()

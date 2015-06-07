@@ -4,8 +4,8 @@ using System.Collections;
 
 public class HealthScript : MonoBehaviour {
 	
-	public float hp = 10.0f;
-	public GUI test = new GUI();
+	public float hp      = 10.0f;
+	public GUI test      = new GUI();
 	public bool isPlayer = false;
 	
 	void OnTriggerEnter2D(Collider2D collider) {

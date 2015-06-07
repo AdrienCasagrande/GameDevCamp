@@ -3,10 +3,11 @@ using System.Collections;
 
 public class PauseScript : MonoBehaviour {
 	public bool       CanPause;
-	public GameObject PauseMenuUI;
+	public GameObject UIMenu;
+
 	
 	void Start () {
-		PauseMenuUI.SetActive (false);
+		UIMenu.SetActive (false);
 		CanPause = true;
 	}
 	
@@ -20,12 +21,12 @@ public class PauseScript : MonoBehaviour {
 			}
 			if (CanPause) 
 			{
-				PauseMenuUI.SetActive(true);
+				UIMenu.SetActive(true);
 				Time.timeScale = 0;
 			} 
 			else
 			{
-				PauseMenuUI.SetActive(false);
+				UIMenu.SetActive(false);
 				Time.timeScale = 1;
 			}
 		}
