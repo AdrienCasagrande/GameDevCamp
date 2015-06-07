@@ -2,18 +2,21 @@
 using System.Collections;
 
 public class GameOverScript : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+	private float hp;
+	private bool Lose = false;
 	
+	public void GameOver() {
+		FadeLevel.LoadLevel ("GameOVer", 1, 1, Color.black);
 	}
 	
-	// Update is called once per frame
 	void Update () {
+		hp = gameObject.GetComponent<HealthScript>().hp;
+		print (hp);
+	}
 	
-	}
-
-	void OnDestroy(){
-		FadeLevel.instance.LoadLevel("GameOver", 1, 1, Color.black);
-	}
+	//void OnDestroy(){
+	//	if (hp <= 0) {
+	//		FadeLevel.LoadLevel ("GameOver", 1, 1, Color.black);
+	//	}
+	//}
 }
