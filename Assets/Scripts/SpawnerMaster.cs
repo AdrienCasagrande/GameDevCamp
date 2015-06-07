@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SpawnerMaster : MonoBehaviour {
 
@@ -7,19 +8,23 @@ public class SpawnerMaster : MonoBehaviour {
 	public Spawner spawner;
 	private GameObject[] spawners;
 
-
+	public Vector3 spawnValues;
+	public int hazardCount = 1;
+	public float spawnWait = 5.0f;
+	public float startWait = 5.0f;
+	public float waveWait = 5.0f;
 	public float minimum_respawn_safe_distance_;
-	public float min_spawner_torque_ = 50;
-	public float max_spawner_torque_ = -50;
+	public float min_spawner_torque_ = 50.0f;
+	public float max_spawner_torque_ = -50.0f;
 	
 	
 	void Start () {
+		StartCoroutine("SpawnWaves");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		GameObject spawner = GenerateSpawner();
-		Destroy(spawner);
+
 	}
 
 	int GenerateCornerPositionAndDirection(out Vector3 position, out Vector3 direction, bool force_corner, int corner)
@@ -99,28 +104,42 @@ public class SpawnerMaster : MonoBehaviour {
 		}
 		return true;
 	}
+
+	public IEnumerator SpawnWaves ()
+	{
+		yield return new WaitForSeconds (startWait);
+		while (true)
+		{
+			for (int i = 0; i < hazardCount; i++)
+			{
+				GameObject spawner = GenerateSpawner();
+				yield return new WaitForSeconds (spawnWait);
+				Destroy(spawner);
+			}
+			yield return new WaitForSeconds (waveWait);
+		}
+	}
 	
 	GameObject GenerateSpawner()
 	{
 		Vector3 position;
 		Vector3 direction;
+		bool goodValue = false;
 		int corner = GenerateCornerPositionAndDirection(out position, out direction, false, 0);
+
 		//Checks if the asteroid is gonna be spawned too close to the player
 		if (!IsSafeDistance(position))
 		{
 			int new_corner = (corner % 4) + 2;
 			GenerateCornerPositionAndDirection(out position, out direction, true, new_corner);
 		}
-		
-		GameObject spawner = GameObject.Instantiate(Resources.Load("Spawner", typeof(GameObject)), position, Quaternion.identity) as GameObject;
-		float asteroid_speed = Random.Range(1, 11);
-		//spawner.GetComponent<Rigidbody2D>().velocity = direction * asteroid_speed * Time.deltaTime;
-		
 
-		
+
+
+		GameObject spawner = GameObject.Instantiate(Resources.Load("Spawner", typeof(GameObject)), position, Quaternion.identity) as GameObject;
 		float torque = Random.Range(min_spawner_torque_, max_spawner_torque_);
 		spawner.GetComponent<Rigidbody2D>().AddTorque(torque);
-
+		Debug.Log (position);
 		spawner.SendMessage("Spawn");
 		return spawner;
 	}
