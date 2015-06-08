@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FadeLevel : MonoBehaviour 
 {
-	private static FadeLevel Instance = null;
+	public static FadeLevel instance = null;
 	private Material m_Material = null;
 	private string m_LevelName = "";
 	private int m_LevelIndex = 0;
@@ -12,17 +12,16 @@ public class FadeLevel : MonoBehaviour
 	
 	public static bool Fading
 	{
-		get { return Instance.m_Fading; }
+		get { return instance.m_Fading; }
 	}
 	
 	private void Awake()
 	{
-		if (Instance == null)
+		if (instance == null)
 		{
-			Instance = this;
+			instance = this;
 		}
 		DontDestroyOnLoad(this);
-		Instance = this;
 		m_Material = new Material("Shader \"Plane/No zTest\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Off Fog { Mode Off } BindChannels { Bind \"Color\",color } } } }");
 	}
 	
@@ -69,17 +68,17 @@ public class FadeLevel : MonoBehaviour
 		StartCoroutine(Fade(aFadeOutTime, aFadeInTime, aColor));
 	}
 	
-	public static void LoadLevel(string aLevelName,float aFadeOutTime, float aFadeInTime, Color aColor)
+	public void LoadLevel(string aLevelName,float aFadeOutTime, float aFadeInTime, Color aColor)
 	{
 		if (Fading) return;
-		Instance.m_LevelName = aLevelName;
-		Instance.StartFade(aFadeOutTime, aFadeInTime, aColor);
+		m_LevelName = aLevelName;
+		StartFade(aFadeOutTime, aFadeInTime, aColor);
 	}
-	public static void LoadLevel(int aLevelIndex,float aFadeOutTime, float aFadeInTime, Color aColor)
+	public void LoadLevel(int aLevelIndex,float aFadeOutTime, float aFadeInTime, Color aColor)
 	{
 		if (Fading) return;
-		Instance.m_LevelName = "";
-		Instance.m_LevelIndex = aLevelIndex;
-		Instance.StartFade(aFadeOutTime, aFadeInTime, aColor);
+		m_LevelName = "";
+		m_LevelIndex = aLevelIndex;
+		StartFade(aFadeOutTime, aFadeInTime, aColor);
 	}
 }
