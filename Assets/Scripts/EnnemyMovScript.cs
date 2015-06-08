@@ -4,16 +4,13 @@ using System.Collections;
 public class EnnemyMovScript : MonoBehaviour {
 
 	public GameObject propulsor;
-	//public int rotationSpeed = 2;
 	public float thrustFreq = 1.0f;
 	public float thrustDuration = 0.5f;
 
 	private float nextThrust;
-	private float verticalIntensity = 0;
 
 	private Transform target;
 	private float angle;
-	Vector3 myRot = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {
