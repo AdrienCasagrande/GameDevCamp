@@ -17,9 +17,10 @@ public class FadeLevel : MonoBehaviour
 	
 	private void Awake()
 	{
-		if (instance == null)
-		{
+		if (instance == null) {
 			instance = this;
+		} else {
+			Destroy(this.gameObject);
 		}
 		DontDestroyOnLoad(this);
 		m_Material = new Material("Shader \"Plane/No zTest\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Off Fog { Mode Off } BindChannels { Bind \"Color\",color } } } }");

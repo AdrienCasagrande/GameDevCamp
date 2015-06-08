@@ -13,7 +13,7 @@ public class SFXScript : MonoBehaviour {
 	void Awake() {
 		if (instance != null) {
 			print ("more than one instance of SFXScript, or not");
-			Destroy (this.gameObject);
+			Destroy (this);
 		} else {
 			instance = this;
 		}
