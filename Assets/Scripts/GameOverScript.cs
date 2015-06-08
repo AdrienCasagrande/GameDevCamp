@@ -3,17 +3,14 @@ using System.Collections;
 
 public class GameOverScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void Start() {
 	}
 
-	void OnDestroy(){
-		FadeLevel.instance.LoadLevel("GameOver", 1, 1, Color.black);
+	void Update () {
+	}
+
+	public void GameOver() {
+		//Application.LoadLevel ("GameOver");
+		FadeLevel.LoadLevel ("GameOVer", 1, 1, Color.black);
 	}
 }
