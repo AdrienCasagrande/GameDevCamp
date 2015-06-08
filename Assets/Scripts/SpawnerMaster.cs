@@ -9,17 +9,26 @@ public class SpawnerMaster : MonoBehaviour {
 	private GameObject[] spawners;
 
 	public Vector3 spawnValues;
-	public int hazardCount = 1;
-	public float spawnWait = 5.0f;
-	public float startWait = 5.0f;
+	public int hazardCount = 3;
+	public float spawnWait = 1.0f;
+	public float nextSpawn;
+	public float startWait = 2.0f;
+	public float nextStart;
 	public float waveWait = 5.0f;
+	public float nextWave;
+	public float currentTime;
 	public float minimum_respawn_safe_distance_;
 	public float min_spawner_torque_ = 50.0f;
 	public float max_spawner_torque_ = -50.0f;
 	
 	
 	void Start () {
-		StartCoroutine("SpawnWaves");
+
+		nextSpawn = Time.time;
+		nextStart = Time.time;
+		nextWave = Time.time;
+		SpawnWaves();
+
 	}
 	
 	// Update is called once per frame
@@ -105,18 +114,27 @@ public class SpawnerMaster : MonoBehaviour {
 		return true;
 	}
 
-	public IEnumerator SpawnWaves ()
+	void SpawnWaves ()
 	{
-		yield return new WaitForSeconds (startWait);
-		while (true)
+		if (Time.time >= nextStart) 
 		{
-			for (int i = 0; i < hazardCount; i++)
+			nextStart = Time.time + startWait;
+			while (true)
 			{
-				GameObject spawner = GenerateSpawner();
-				yield return new WaitForSeconds (spawnWait);
-				Destroy(spawner);
+				for (int i = 0; i < hazardCount; i++)
+				{
+					GameObject spawner = GenerateSpawner();
+					Destroy(spawner);
+					if (Time.time >= nextSpawn){
+						nextSpawn = Time.time + spawnWait;
+
+					}
+						
+				}
+				if (Time.time >= nextWave) {
+					nextWave = Time.time + waveWait;
+				}
 			}
-			yield return new WaitForSeconds (waveWait);
 		}
 	}
 	
