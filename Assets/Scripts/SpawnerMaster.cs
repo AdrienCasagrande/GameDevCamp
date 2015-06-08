@@ -10,12 +10,10 @@ public class SpawnerMaster : MonoBehaviour {
 
 	public Vector3 spawnValues;
 	public int hazardCount = 3;
-	public float spawnWait = 1.0f;
+	public float spawnWait = 2.0f;
 	public float nextSpawn;
-	public float startWait = 2.0f;
+	public float startWait = 0.0f;
 	public float nextStart;
-	public float waveWait = 5.0f;
-	public float nextWave;
 	public float currentTime;
 	public float minimum_respawn_safe_distance_;
 	public float min_spawner_torque_ = 50.0f;
@@ -23,10 +21,8 @@ public class SpawnerMaster : MonoBehaviour {
 	
 	
 	void Start () {
-
-		nextSpawn = Time.time;
-		nextStart = Time.time;
-		nextWave = Time.time;
+		nextSpawn = Time.time + spawnWait;
+		nextStart = Time.time + startWait;
 		SpawnWaves();
 
 	}
@@ -119,21 +115,12 @@ public class SpawnerMaster : MonoBehaviour {
 		if (Time.time >= nextStart) 
 		{
 			nextStart = Time.time + startWait;
-			while (true)
+			for (int i = 0; i < hazardCount; i++)
 			{
-				for (int i = 0; i < hazardCount; i++)
-				{
-					GameObject spawner = GenerateSpawner();
-					Destroy(spawner);
-					if (Time.time >= nextSpawn){
-						nextSpawn = Time.time + spawnWait;
-
-					}
-						
-				}
-				if (Time.time >= nextWave) {
-					nextWave = Time.time + waveWait;
-				}
+				GameObject spawner = GenerateSpawner();
+				Destroy(spawner);
+				while (Time.time >= nextSpawn) {}
+				nextSpawn = Time.time + spawnWait;
 			}
 		}
 	}
@@ -155,8 +142,8 @@ public class SpawnerMaster : MonoBehaviour {
 
 
 		GameObject spawner = GameObject.Instantiate(Resources.Load("Spawner", typeof(GameObject)), position, Quaternion.identity) as GameObject;
-		float torque = Random.Range(min_spawner_torque_, max_spawner_torque_);
-		spawner.GetComponent<Rigidbody2D>().AddTorque(torque);
+		//float torque = Random.Range(min_spawner_torque_, max_spawner_torque_);
+		//spawner.GetComponent<Rigidbody2D>().AddTorque(torque);
 		Debug.Log (position);
 		spawner.SendMessage("Spawn");
 		return spawner;
