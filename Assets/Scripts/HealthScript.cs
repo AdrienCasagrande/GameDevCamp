@@ -4,7 +4,7 @@ using System.Collections;
 public class HealthScript : MonoBehaviour {
 	
 	public float hp      = 10.0f;
-	public GUI test      = new GUI();
+	public int scoreValue = 10;
 	public bool isPlayer = false;
 	
 	void OnTriggerEnter2D(Collider2D collider) {
@@ -16,6 +16,8 @@ public class HealthScript : MonoBehaviour {
 				SFXScript.instance.explode(transform.position);
 				if (isPlayer) {
 					gameObject.GetComponent<GameOverScript>().GameOver();
+				} else {
+					ScoreScript.instance.addToScore(scoreValue);
 				}
 				Destroy(gameObject);
 			}

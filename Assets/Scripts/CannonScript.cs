@@ -4,9 +4,9 @@ using System.Collections;
 public class CannonScript : MonoBehaviour {
 
 	public GameObject[] munition;
+	public int ammoSelect = 0;
 
 	private float nextFire;
-	private int ammoSelect = 0;
 
 	// Use this for initialization
 	void Start () {
