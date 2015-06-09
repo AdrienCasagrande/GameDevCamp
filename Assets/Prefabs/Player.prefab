@@ -436,6 +436,8 @@ MonoBehaviour:
   munition:
   - {fileID: 137690, guid: ecae5f67163522b4ab939ba89487bb81, type: 2}
   - {fileID: 184872, guid: cf229230e4fccab49a4645a1f94f9117, type: 2}
+  - {fileID: 154336, guid: fd590bf01575c544fb580029d9384b5e, type: 2}
+  ammoSelect: 0
 --- !u!114 &11472866
 MonoBehaviour:
   m_ObjectHideFlags: 1
