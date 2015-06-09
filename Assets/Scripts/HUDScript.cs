@@ -71,6 +71,6 @@ public class HUDScript : MonoBehaviour {
 		GUI.backgroundColor = Color.green;
 		GUI.HorizontalScrollbar (HudBarHp, 0, PlayerInfo.hp, 0, 10);
 		GUI.backgroundColor = Color.clear;
-		GUI.Label (new Rect (Screen.width / 2 - 100, 0, 200, 46), "0", CustomFontStyle);
+		GUI.Label (new Rect (Screen.width / 2 - 100, 0, 200, 46), ScoreScript.instance.currentScore.ToString(), CustomFontStyle);
 	}
 }

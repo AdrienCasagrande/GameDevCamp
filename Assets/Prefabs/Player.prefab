@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  scoreValue: 10
   isPlayer: 1
 --- !u!114 &11489826
 MonoBehaviour:

@@ -9,13 +9,10 @@ public class Spawner : MonoBehaviour {
 	public float forceMax = 1;
 	public float forceMin = 5;
 	private float angle;
-//	private Camera camera;
 	Vector2 direction;
 
 	void Start ()
 	{
-		// Start calling the Spawn function repeatedly after a delay .
-		// Invoke("Spawn", spawnTime);
 	
 	}
 

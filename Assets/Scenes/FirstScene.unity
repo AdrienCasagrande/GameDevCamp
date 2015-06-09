@@ -4166,14 +4166,10 @@ Prefab:
       propertyPath: m_TagString
       value: Cannon
       objectReference: {fileID: 0}
-    - target: {fileID: 11452828, guid: fa768836fa220e442b989820c0af0fa6, type: 2}
-      propertyPath: munition.Array.data[2]
-      value: 
-      objectReference: {fileID: 154336, guid: fd590bf01575c544fb580029d9384b5e, type: 2}
-    - target: {fileID: 11452828, guid: fa768836fa220e442b989820c0af0fa6, type: 2}
-      propertyPath: munition.Array.data[3]
-      value: 
-      objectReference: {fileID: 154336, guid: fd590bf01575c544fb580029d9384b5e, type: 2}
+    - target: {fileID: 11472866, guid: fa768836fa220e442b989820c0af0fa6, type: 2}
+      propertyPath: hp
+      value: 10000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa768836fa220e442b989820c0af0fa6, type: 2}
   m_IsPrefabParent: 0
@@ -5348,6 +5344,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1138405156}
   - 114: {fileID: 1138405157}
+  - 114: {fileID: 1138405158}
   - 114: {fileID: 1138405159}
   m_Layer: 0
   m_Name: Scripts
@@ -5382,6 +5379,23 @@ MonoBehaviour:
   boomEffect: {fileID: 19831466, guid: f1779f33a40582e46b7c76d86ace386c, type: 2}
   flameBurst: {fileID: 19862568, guid: 1534027e2d9e89243bcb7faf4475a51f, type: 2}
   boomSound: {fileID: 8300000, guid: 531f5b77e973e0c4a865459e092fc9e0, type: 3}
+--- !u!114 &1138405158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138405155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e55c7491125a3648bab6f3fdb9145df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ennemies:
+  - {fileID: 162616, guid: a998e4d60acc128419227fb8e8e48007, type: 2}
+  - {fileID: 142580, guid: 5c1ba6be6a2db1a43899311ea1c486aa, type: 2}
+  waveMap: 0200000001000000
+  minimum_respawn_safe_distance_: .100000001
+  spawnPerSec: 2
 --- !u!114 &1138405159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5390,21 +5404,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1138405155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf2e707c1c15044fb2e451eb5dbedcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 351f0d6b7bf848c4fbd61efe3d49141b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  garbage: {fileID: 0}
-  spawner: {fileID: 0}
-  spawnValues: {x: 0, y: 0, z: 0}
-  hazardCount: 3
-  spawnWait: 1
-  nextSpawn: 0
-  startWait: 2
-  nextStart: 0
-  currentTime: 0
-  minimum_respawn_safe_distance_: 0
-  min_spawner_torque_: 50
-  max_spawner_torque_: -50
+  currentScore: 0
+  xp: 0
+  currentWave: 0
 --- !u!1 &1163489482
 GameObject:
   m_ObjectHideFlags: 0

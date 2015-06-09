@@ -4,39 +4,48 @@ using System.Collections.Generic;
 
 public class SpawnerMaster : MonoBehaviour {
 
-	public Garbage garbage;
-	public Spawner spawner;
-	private GameObject[] spawners;
-
 	public Vector3 spawnValues;
 	public int hazardCount = 3;
-	public float spawnWait = 1.0f;
-	public float nextSpawn;
-	public float startWait = 2.0f;
-	public float nextStart;
-	public float currentTime;
 	public float minimum_respawn_safe_distance_;
 	public float min_spawner_torque_ = 50.0f;
 	public float max_spawner_torque_ = -50.0f;
-	
+
+	public float spawnWait = 1.0f;
+	public float nextSpawn;
+	public float startWait = 2.0f;
+	private bool nextWave = true;
 	
 	void Start () {
-
 		nextSpawn = Time.time;
-		nextStart = Time.time;
-		SpawnWaves();
-
+		startWait = Time.time + startWait;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (Time.time >= startWait) {
+			if (nextWave) {
+				SpawnWaves();
+				nextWave = false;
+			}
+		}
 	}
 
+	void SpawnWaves ()
+	{
+			for (int i = 0; i < hazardCount; i++) {
+				GameObject spawner = GenerateSpawner();
+				Destroy(spawner);
+				if (Time.time >= nextSpawn){
+					nextSpawn = Time.time + spawnWait;
+					
+				}
+				
+			}
+	}
+	
 	int GenerateCornerPositionAndDirection(out Vector3 position, out Vector3 direction, bool force_corner, int corner)
 	{
-		if (!force_corner)
-		{
+		if (!force_corner) {
 			corner = Random.Range(1, 5); //1 = Left, 2 = Top, 3 = Right, 4 = Bottom        
 		}
 		float x = 0.0f;
@@ -51,8 +60,7 @@ public class SpawnerMaster : MonoBehaviour {
 			y = Random.Range(0.0f, 1.0f);
 			x_dir = 1.0f;
 			y_dir = Random.Range(0.0f, 1.0f);
-			while (Mathf.Abs(y - y_dir) < min_dist_threshold)
-			{
+			while (Mathf.Abs(y - y_dir) < min_dist_threshold) {
 				y_dir = Random.Range(0.0f, 1.0f);
 			}
 			break;
@@ -61,8 +69,7 @@ public class SpawnerMaster : MonoBehaviour {
 			y = 1.0f;
 			
 			x_dir = Random.Range(0.0f, 1.0f);
-			while (Mathf.Abs(x - x_dir) < min_dist_threshold)
-			{
+			while (Mathf.Abs(x - x_dir) < min_dist_threshold) {
 				x_dir = Random.Range(0.0f, 1.0f);
 			}
 			
@@ -74,8 +81,7 @@ public class SpawnerMaster : MonoBehaviour {
 			
 			x_dir = 0.0f;
 			y_dir = Random.Range(0.0f, 1.0f);
-			while (Mathf.Abs(y - y_dir) < min_dist_threshold)
-			{
+			while (Mathf.Abs(y - y_dir) < min_dist_threshold) {
 				y_dir = Random.Range(0.0f, 1.0f);
 			}
 			break;
@@ -83,8 +89,7 @@ public class SpawnerMaster : MonoBehaviour {
 			x = Random.Range(0.0f, 1.0f);
 			
 			x_dir = Random.Range(0.0f, 1.0f);
-			while (Mathf.Abs(x - x_dir) < min_dist_threshold)
-			{
+			while (Mathf.Abs(x - x_dir) < min_dist_threshold) {
 				x_dir = Random.Range(0.0f, 1.0f);
 			}
 			y_dir = 1.0f;
@@ -103,47 +108,23 @@ public class SpawnerMaster : MonoBehaviour {
 	bool IsSafeDistance(Vector3 position)
 	{
 		GameObject player_ship_instance_ = GameObject.Find ("Player");
-		if (player_ship_instance_ != null)
-		{
+		if (player_ship_instance_ != null) {
 			float distance = (player_ship_instance_.transform.position - position).magnitude;
 			return distance > minimum_respawn_safe_distance_;
 		}
 		return true;
 	}
 
-	void SpawnWaves ()
-	{
-		if (Time.time >= nextStart) 
-		{
-			nextStart = Time.time + startWait;
-				for (int i = 0; i < hazardCount; i++)
-				{
-					GameObject spawner = GenerateSpawner();
-					Destroy(spawner);
-					if (Time.time >= nextSpawn){
-						nextSpawn = Time.time + spawnWait;
-
-					}
-						
-				}
-		}
-	}
-	
 	GameObject GenerateSpawner()
 	{
 		Vector3 position;
 		Vector3 direction;
-//		bool goodValue = false;
 		int corner = GenerateCornerPositionAndDirection(out position, out direction, false, 0);
 
-		//Checks if the asteroid is gonna be spawned too close to the player
-		if (!IsSafeDistance(position))
-		{
+		if (!IsSafeDistance(position)) {
 			int new_corner = (corner % 4) + 2;
 			GenerateCornerPositionAndDirection(out position, out direction, true, new_corner);
 		}
-
-
 
 		GameObject spawner = GameObject.Instantiate(Resources.Load("Spawner", typeof(GameObject)), position, Quaternion.identity) as GameObject;
 		float torque = Random.Range(min_spawner_torque_, max_spawner_torque_);
