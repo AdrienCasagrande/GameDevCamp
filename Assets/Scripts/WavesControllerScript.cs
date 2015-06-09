@@ -44,7 +44,6 @@ public class WavesControllerScript : MonoBehaviour {
 			if (startOfWave) {
 				ScoreScript.instance.addToWave(totalSpawn);
 				startOfWave = false;
-				print(waveBase);
 			}
 
 			if (Time.time >= nextSpawn) {
@@ -90,14 +89,13 @@ public class WavesControllerScript : MonoBehaviour {
 
 		for (int i = 0; toAdd > 0 && i < ennemies.Length && i < waveMap.Length; i++) {
 			int toAddType;
-			if (toAdd <= waveMap[i]) {
+			if (toAdd < waveMap[i]) {
 				toAddType = toAdd;
 				toAdd = 0;
 			} else {
 				toAddType = waveMap[i];
 				toAdd -= waveMap[i];
-				print (i);
-				if (i == waveMap.Length - 1) {
+				if (i == waveMap.Length - 1 && toAdd == waveMap[i]) {
 					waveBase++;
 				}
 			}
